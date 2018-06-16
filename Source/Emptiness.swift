@@ -17,6 +17,15 @@ public protocol ExpressibleAsEmpty {
      * Empty value of this type. For example, in case of String type the value will be ""
      */
     static var empty: Self { get }
+
+    /** reset back to empty state. */
+    mutating func reset()
+}
+
+extension ExpressibleAsEmpty {
+    public mutating func reset() {
+        self = Self.empty
+    }
 }
 
 extension ExpressibleAsEmpty where Self: Equatable {
